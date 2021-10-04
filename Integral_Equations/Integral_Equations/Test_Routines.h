@@ -6,6 +6,8 @@ namespace testing {
 
 	void gaussj_test(); 
 
+	void ludcmp_test();
+
 }
 
 #endif

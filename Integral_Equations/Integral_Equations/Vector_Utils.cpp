@@ -201,6 +201,35 @@ void vecut::array_2d_print(std::vector<std::vector<double>>& name)
 	}
 }
 
+void vecut::print_vec(std::vector<double> &arr)
+{
+	// print a vector to the screen, for practicality's sake limit the size of elements printed to 
+	// that of a 10*10
+	// R. Sheehan 4 - 10 - 2021
+
+	try {
+		if (!arr.empty()) {
+			int rows;
+			rows = std::min(10, static_cast<int>(arr.size()));			
+			for (int i = 0; i < rows; i++) {
+				std::cout << arr[i] << "\n"; 
+			}
+		}
+		else {
+			std::string reason = "Error: void vecut::print_vec(std::vector<double> &arr)\n";
+			reason += "Array has not been assigned values\n";
+			throw std::invalid_argument(reason);
+		}
+	}
+	catch (std::invalid_argument& e) {
+		useful_funcs::exit_failure_output(e.what());
+		exit(EXIT_FAILURE);
+	}
+	catch (std::runtime_error& e) {
+		std::cerr << e.what();
+	}
+}
+
 void vecut::print_mat(std::vector<std::vector<double>> &matrix)
 {
 	// print the matrix to the screen, for practicality's sake limit the size of elements printed to 

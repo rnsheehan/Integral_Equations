@@ -11,6 +11,8 @@ int main()
 
 	testing::gaussj_test(); 
 
+	testing::ludcmp_test(); 
+
 	std::cout << "Press enter to close console\n";
 	std::cin.get();
 

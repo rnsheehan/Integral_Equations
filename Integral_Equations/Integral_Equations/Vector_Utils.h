@@ -23,6 +23,7 @@ namespace vecut {
 	void write_into_file(std::string &filename, std::vector<double> &data, bool loud = false); 
 	void read_into_matrix(std::string &filename, std::vector<std::vector<double>> &data, int &n_rows, int &n_cols, bool loud = false);
 
+	void print_vec(std::vector<double>& arr);
 	void print_mat(std::vector<std::vector<double>> &matrix);
 	void print_cmat(std::vector<std::vector<std::complex<double>>> &matrix);
 
