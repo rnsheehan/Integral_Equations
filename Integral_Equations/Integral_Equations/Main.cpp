@@ -9,9 +9,11 @@
 int main()
 {
 
-	testing::gaussj_test(); 
+	//testing::gaussj_test(); 
 
-	testing::ludcmp_test(); 
+	//testing::ludcmp_test(); 
+
+	testing::numerical_integration(); 
 
 	std::cout << "Press enter to close console\n";
 	std::cin.get();

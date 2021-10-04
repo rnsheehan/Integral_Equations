@@ -35,6 +35,7 @@ static const double PI_3=((4.0/3.0)*p); // pi / 3
 static const double PI_4=(p); // pi / 4
 static const double PI_5=((4.0/5.0)*p); // pi / 5
 static const double PI_6=((2.0/3.0)*p); // pi / 6 
+static const double EPS = 1.0e-12; 
 static const double TINY = 1.0e-20; 
 
 static const int MAX_PATH_LENGTH = 250; // max. length for a directory in Windows OS
@@ -50,6 +51,7 @@ static const std::complex<double> one(1.0, 0.0);
 #include "Useful.h"
 #include "Vector_Utils.h"
 #include "Linear_Algebra.h"
+#include "Quadrature.h"
 #include "Test_Routines.h"
 
 #endif

@@ -33,6 +33,9 @@
     <ClInclude Include="Test_Routines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Quadrature.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Linear_Algebra.cpp">
@@ -48,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Test_Routines.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Quadrature.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

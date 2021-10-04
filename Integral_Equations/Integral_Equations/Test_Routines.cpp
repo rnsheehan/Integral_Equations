@@ -98,3 +98,74 @@ void testing::ludcmp_test()
 
 	A.clear(); b.clear(); Ainv.clear(); indx.clear(); 
 }
+
+void testing::numerical_integration()
+{
+	// testing of the numerical integration routines
+	// R. Sheehan 4 - 10 - 2021
+
+	std::cout << "Integration by Gaussian Quadrature\n"; 
+	std::cout << "Integral g1 on [-1, 1] = " << quad::qgaus(g1, -1, 1) << "\n"; 
+	std::cout << "Integral g2 on [1, 10] = " << quad::qgaus(g2, 1, 10) << "\n"; 
+	std::cout << "Integral g3 on [3, 6] = " << quad::qgaus(g3, 3, 6) << "\n\n"; 
+
+	int n = 10;
+	double x1 = 1, x2 = 10;
+	std::vector<double> X(n);
+	std::vector<double> W(n);
+
+	quad::gauleg(x1, x2, X, W, n);
+
+	std::cout << "Gauss-Legendre Quadrature Nodes and Weights\n";
+	std::cout << "N = " << n << "\n";
+	for (int i = 0; i < n; i++) {
+		std::cout << i << " , " << X[i] << " , " << W[i] << "\n";
+	}
+	std::cout << "\n";
+
+	double sum = 0.0; 
+	double exact = g5(x2) - g5(x1); 
+	for (int i = 0; i < n; i++) {
+		sum += W[i] * g4(X[i]); 
+	}
+	std::cout << "Gauss-Legendre Integral of g4 on [1, 10] = " << sum << "\n"; 
+	std::cout << "Exact value of Integral of g4 on [1, 10] = " << exact << "\n"; 
+	std::cout << "Error in Numerical Integral of g4 on [1, 10] = " << fabs(exact - sum) << "\n\n"; 
+}
+
+double testing::g1(double x)
+{
+	return (exp(-(x * x)));
+	// exact = sqrt(pi/4) Erf(x)
+	// exact = sqrt(pi) Erf(1) ~ 1.49365
+	//error ~ 10^{-30} over [-1,1]
+}
+
+double testing::g2(double x)
+{
+	return (x * x * log(x));
+	// exact = (x^{3}/3) Log(x) - (x^{3}/9) + C
+	// exact = -111 + (1000/9)Log[1000] ~ 656.528
+	//error ~ 10^{-12} over [1,10]
+}
+
+double testing::g3(double x)
+{
+	return ((2.0 * x) / (x * x - 4.0));
+	// exact = Log[x^{2}-4] + C
+	// exact = Log[32/5] ~ 1.8563
+	//error ~ 10^{-15} over[3, 6]
+}
+
+double testing::g4(double x)
+{
+	return (x*exp(-x));
+	// exact = -(1 + x) e^{-x} + C
+	// exact = (2 e^{9} - 11)/e^{10} ~ 0.735259
+	//error ~ 10^{-15} over[1, 10]
+}
+
+double testing::g5(double x)
+{
+	return (-1.0 * (1 + x) * exp(-x));
+}

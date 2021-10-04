@@ -8,6 +8,17 @@ namespace testing {
 
 	void ludcmp_test();
 
+	void numerical_integration(); 
+
+	double g1(double x); 
+	
+	double g2(double x); 
+
+	double g3(double x); 
+
+	double g4(double x); 
+
+	double g5(double x); 
 }
 
 #endif
