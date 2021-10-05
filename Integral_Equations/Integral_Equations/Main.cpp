@@ -11,9 +11,13 @@ int main()
 
 	//testing::gaussj_test(); 
 
-	testing::ludcmp_test(); 
+	//testing::ludcmp_test(); 
 
 	//testing::numerical_integration(); 
+
+	//testing::fredholm_solve(); 
+
+	testing::volterra_solve(); 
 
 	std::cout << "Press enter to close console\n";
 	std::cin.get();

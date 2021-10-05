@@ -13,6 +13,18 @@ namespace testing {
 
 	void numerical_integration(); 
 
+	void fredholm_solve(); 
+
+	void volterra_solve(); 
+
+	double gfe(double t); 
+
+	double akfe(double t, double s); 
+
+	double gve(int k, double t); 
+
+	double akve(int k, int l, double t, double s); 
+
 	double g1(double x); 
 	
 	double g2(double x); 

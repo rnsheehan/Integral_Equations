@@ -136,6 +136,93 @@ void testing::numerical_integration()
 	std::cout << "Error in Numerical Integral of g4 on [1, 10] = " << fabs(exact - sum) << "\n\n"; 
 }
 
+void testing::fredholm_solve()
+{
+	// Solve the Fredholm equation of the second kind for f(t)
+	// f(t) = \int_{0}^{\pi/2} akfe(t, s) f(t) ds + gfe(t)
+	// exact solution for original choice of gfe and akfe is sqrt(t)
+	// R. Sheehan 5 - 10 - 2021
+
+	int N = 10; 
+	double a = 0, b = PI_2, exact, err, pos = PI_4, ans; 
+	std::vector<double> t(N); 
+	std::vector<double> w(N); 
+	std::vector<double> f(N);
+
+	ieqn::fred2(N, a, b, t, f, w, gfe, akfe); 
+
+	std::cout << "Numerical Solution of Fredholm Equation\n"; 
+	std::cout << "i , t[i] , f[i], sqrt(t[i]) , error\n"; 
+	for (int i = 0; i < N; i++) {
+		exact = sqrt(t[i]); 
+		err = fabs(f[i] - exact); 
+		std::cout << i << " , " << t[i] << " , " << f[i] << " , " << sqrt(t[i]) << " , " << err << "\n";
+	}
+	
+	// Perform interpolation of the solution using Nystrom method
+	ans = ieqn::fredin(pos, N, a, b, t, f, w, gfe, akfe);
+
+	std::cout << "\nNystrom Interpolation of Solution\n"; 
+	std::cout << "pos , appr , exact\n"; 
+	std::cout << pos << " , " << ans << " , " << sqrt(pos) << "\n\n";	
+
+	t.clear(); w.clear(); f.clear(); 
+}
+
+void testing::volterra_solve()
+{
+	// Solve the pair of coupled Volterra equations
+	// f_{1}(t) = \int_{0}^{t} akve0 f_{1}(s) ds + \int_{0}^{t} akve1 f_{2}(s) ds + gve0
+	// f_{2}(t) = \int_{0}^{t} akve1 f_{1}(s) ds + \int_{0}^{t} akve1 f_{2}(s) ds + gve1
+	// exact solution is f_{1}(t) = e^{-t}, f_{2}(t) = 2 sin(t)
+	// R. Sheehan 5 - 10 - 2021
+
+	int n = 25, m = 2; 
+	double h = 0.01, t0 = 0.0; 
+	std::vector<double> t(n); 
+	std::vector<std::vector<double>> f; 
+
+	f = vecut::array_2D(m, n); 
+
+	// solve the pair of volterra equations
+	ieqn::voltra(n, m, t0, h, t, f, gve, akve); 
+
+	std::cout << "pos , f1-appr, f1-exact, f2-appr, f2-exact\n"; 
+	for (int i = 0; i < n; i++) {
+		std::cout << t0 << " , " << f[0][i] << " , " << exp(-t0) << " , " << f[1][i] << " , " << 2.0 * sin(t0) << "\n"; 
+		t0 += h; 
+	}
+	std::cout << "\n"; 
+}
+
+double testing::gfe(double t)
+{
+	// rhs function for Fredholm equation example
+	double c1 = 2.25;
+	double c2 = pow(PI_2, c1)/c1; // (pi/2)^2.25 / 2.25
+	return (sqrt(t) - c2 * pow(t, 0.75)); 
+}
+
+double testing::akfe(double t, double s)
+{
+	// kernel function for Fredholm equation example
+	return pow(t * s, 0.75); 
+}
+
+double testing::gve(int k, double t)
+{
+	// rhs function for Volterra equation example
+
+	return (k == 0 ? cosh(t) + t * sin(t) : 2.0 * sin(t) + t * (template_funcs::DSQR(sin(t)) + exp(t))); 
+}
+
+double testing::akve(int k, int l, double t, double s)
+{
+	// kernel function for Volterra equation example
+
+	return ((k == 0) ? (l == 0 ? -exp(t - s) : -cos(t - s)) : (l == 0 ? -exp(t + s) : -t * cos(s))); 
+}
+
 double testing::g1(double x)
 {
 	return (exp(-(x * x)));
