@@ -60,7 +60,7 @@ double quad::qgaus(double (*f)(double), double a, double b)
 void quad::gauleg(double x1, double x2, std::vector<double>& x, std::vector<double>& w, int& n)
 {
 	// Given the lower and upper limits of integration x1 and x2, this routine returns arrays x[0..n-1]
-	// and w[0..n - 1] of length n, containing the abscissasand weights of the Gauss - Legendre n - point
+	// and w[0..n - 1] of length n, containing the abscissas and weights of the Gauss - Legendre n - point
 	// quadrature formula.
 	// R. Sheehan 4 - 10 - 2021
 
