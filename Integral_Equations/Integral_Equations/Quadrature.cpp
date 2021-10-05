@@ -101,8 +101,8 @@ void quad::gauleg(double x1, double x2, std::vector<double>& x, std::vector<doub
 		else {
 			std::string reason = "Error: void gauleg(double x1, double x2, std::vector<double>& x, std::vector<double>& w, int& n)\n";
 			if(!c1) reason += "Integration range is not correct\n";
-			if(!c2) reason += "Integration range is not correct\n";
-			if(!c3 || !c4) reason += "Integration range is not correct\n";
+			if(!c2) reason += "Number of nodes is not correct\n";
+			if(!c3 || !c4) reason += "Storage arrays are not correctly sized\n";
 			throw std::invalid_argument(reason);
 		}
 	}

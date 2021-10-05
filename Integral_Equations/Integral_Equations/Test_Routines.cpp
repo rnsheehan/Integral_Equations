@@ -2,6 +2,9 @@
 #include "Attach.h"
 #endif
 
+// Definitions of the methods in testing namespace
+// R. Sheehan 4 - 10 - 2021
+
 void testing::gaussj_test()
 {
 	// Ensure the Gauss elimination scheme is working correctly
@@ -88,7 +91,7 @@ void testing::ludcmp_test()
 	
 	lin_alg::ludet(A, d, nrows); 
 
-	std::cout << "Determinant of the Matrix A is "<<d<<"\n";
+	std::cout << "\nDeterminant of the Matrix A is "<<d<<"\n";
 
 	lin_alg::luinv(A, Ainv, indx, nrows); 
 

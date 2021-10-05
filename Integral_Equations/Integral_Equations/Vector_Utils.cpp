@@ -2,6 +2,9 @@
 #include "Attach.h"
 #endif
 
+// Definitions of the methods in the vecut namespace
+// R. Sheehan 22 - 6 - 2018
+
 std::vector< std::vector< double > > vecut::array_2D(int& nrows, int& ncols)
 {
 	// create an array of zeroes of size nrows*ncols

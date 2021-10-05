@@ -2,6 +2,9 @@
 #include "Attach.h"
 #endif
 
+// Definitions of the methods in the lin_alg namespace
+// R. Sheehan 22 - 6 - 2018
+
 double lin_alg::inf_norm(std::vector<double>& vec)
 {
 	// determine the infinity-norm (largest value by absolute value) in a given vector

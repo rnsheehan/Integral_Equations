@@ -52,6 +52,7 @@ static const std::complex<double> one(1.0, 0.0);
 #include "Vector_Utils.h"
 #include "Linear_Algebra.h"
 #include "Quadrature.h"
+#include "Int_Eqn.h"
 #include "Test_Routines.h"
 
 #endif

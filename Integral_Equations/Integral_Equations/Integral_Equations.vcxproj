@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Attach.h" />
+    <ClInclude Include="Int_Eqn.h" />
     <ClInclude Include="Linear_Algebra.h" />
     <ClInclude Include="Quadrature.h" />
     <ClInclude Include="Templates.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Vector_Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Int_Eqn.cpp" />
     <ClCompile Include="Linear_Algebra.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Quadrature.cpp" />

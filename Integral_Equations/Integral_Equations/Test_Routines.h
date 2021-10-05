@@ -1,6 +1,9 @@
 #ifndef TEST_ROUTINES_H
 #define TEST_ROUTINES_H
 
+// Declaration of the testing namespace
+// Functions for testing methods go here
+// R. Sheehan 4 - 10 - 2021
 
 namespace testing {
 
