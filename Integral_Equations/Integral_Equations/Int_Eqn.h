@@ -7,6 +7,8 @@
 // Also, homogeneous equations i.e. those with g = 0, are not treated
 // As I understand it homogeneous equations reduce to a solution of a system of linear equations or a matrix eigenvalue problem
 // The code for treating problems in which the Kernel is singular is also not included. I'm not interested enough to pursue it. 
+// Methods are based on those given in NRinC which in turn are derived from
+// "Computational Methods for Integral Equations" by Delves and Mohamed
 // R. Sheehan 5 - 10 - 2021
 
 namespace ieqn {
