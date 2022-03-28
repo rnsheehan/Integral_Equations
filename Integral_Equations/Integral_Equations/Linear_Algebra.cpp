@@ -353,3 +353,16 @@ void lin_alg::luinv(std::vector<std::vector<double>>& a, std::vector<std::vector
 		exit(EXIT_FAILURE);
 	}
 }
+
+void lin_alg::luslv(std::vector<std::vector<double>>& a, int n, std::vector<double>& b)
+{
+	// Solve the system Ax=b using LU decomposition
+	std::vector<int> indx(n, 0);
+	double d = 0.0;
+
+	ludcmp(a, n, indx, d); // compute LU Decomposition of A
+
+	lubksb(a, n, indx, b); // Solve the system A.x = b using back-substitution
+
+	indx.clear();
+}

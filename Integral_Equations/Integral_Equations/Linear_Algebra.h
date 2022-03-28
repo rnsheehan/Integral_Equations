@@ -16,6 +16,7 @@ namespace lin_alg {
 	void lubksb(std::vector< std::vector< double > >& a, int& n, std::vector<int>& indx, std::vector<double>& b); 
 	void ludet(std::vector< std::vector< double > >& a, double &d, int& n); 
 	void luinv(std::vector< std::vector<double>>& a, std::vector<std::vector<double>>& y, std::vector<int>& indx, int& n); 
+	void luslv(std::vector<std::vector<double>>& a, int n, std::vector<double>& b);
 }
 
 #endif
