@@ -11,11 +11,11 @@ int main()
 
 	//testing::gaussj_test(); 
 
-	testing::ludcmp_test(); 
+	//testing::ludcmp_test(); 
 
 	//testing::numerical_integration(); 
 
-	//testing::fredholm_solve(); 
+	testing::fredholm_solve(); 
 
 	//testing::volterra_solve(); 
 
